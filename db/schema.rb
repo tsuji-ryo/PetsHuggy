@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114045006) do
+ActiveRecord::Schema.define(version: 20171117053049) do
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "home_type"
+    t.string   "pet_type"
+    t.string   "pet_size"
+    t.integer  "breeding_years"
+    t.string   "address"
+    t.string   "listing_title"
+    t.text     "listing_content"
+    t.integer  "price_pernight"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "photos", ["listing_id"], name: "index_photos_on_listing_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
