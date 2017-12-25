@@ -44,6 +44,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+
 group :development do
   gem 'dotenv-rails'
 end
@@ -62,5 +63,6 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+gem 'aws-sdk', '~> 2.3'
 
 
